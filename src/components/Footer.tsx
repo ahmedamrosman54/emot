@@ -1,29 +1,36 @@
-import { motion } from 'framer-motion';
-import { Phone, MessageCircle, Mail, Github, Linkedin, ArrowUp } from 'lucide-react';
-import { useLanguage } from '@/i18n/LanguageContext';
+import { motion } from "framer-motion";
+import {
+  Phone,
+  MessageCircle,
+  Mail,
+  Github,
+  Linkedin,
+  ArrowUp,
+} from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
-const WHATSAPP_URL = 'https://wa.me/201012266400';
-const PHONE = '01012266400';
-const EMAIL = 'ahmed.amr@emot.dev';
-const GITHUB_URL = 'https://github.com/emot-dev';
-const LINKEDIN_URL = 'https://linkedin.com/in/ahmed-amr-emot';
+const WHATSAPP_URL = "https://wa.me/201012266400";
+const PHONE = "01012266400";
+const EMAIL = "ahmoziaham@gmail.com";
+const GITHUB_URL = "https://github.com/ahmedamrosman54";
+const LINKEDIN_URL = "https://linkedin.com/in/ahmed-amr-emot";
 
 export function Footer() {
   const { t } = useLanguage();
 
   const quickLinks = [
-    { label: t.nav.home, href: '#home' },
-    { label: t.nav.about, href: '#about' },
-    { label: t.nav.portfolio, href: '#portfolio' },
-    { label: t.nav.pricing, href: '#pricing' },
-    { label: t.nav.contact, href: '#contact' },
+    { label: t.nav.home, href: "#home" },
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.portfolio, href: "#portfolio" },
+    { label: t.nav.pricing, href: "#pricing" },
+    { label: t.nav.contact, href: "#contact" },
   ];
 
   const services = [
-    { label: t.services.card1Title, href: '#services' },
-    { label: t.services.card2Title, href: '#services' },
-    { label: t.services.card3Title, href: '#services' },
-    { label: t.services.card4Title, href: '#services' },
+    { label: t.services.card1Title, href: "#services" },
+    { label: t.services.card2Title, href: "#services" },
+    { label: t.services.card3Title, href: "#services" },
+    { label: t.services.card4Title, href: "#services" },
   ];
 
   return (
@@ -37,8 +44,12 @@ export function Footer() {
               <span className="text-white">e</span>
               <span className="text-gradient-neon">mot</span>
             </a>
-            <p className="mt-3 text-sm leading-relaxed text-slate-400">{t.footer.tagline}</p>
-            <p className="mt-4 text-xs text-slate-500">Ahmed Amr — {t.nav.about}</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-400">
+              {t.footer.tagline}
+            </p>
+            <p className="mt-4 text-xs text-slate-500">
+              Ahmed Amr — {t.nav.about}
+            </p>
           </div>
 
           {/* Quick links */}

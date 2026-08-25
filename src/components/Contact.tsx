@@ -1,24 +1,47 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Send, Mail, Phone, MessageCircle, CheckCircle, AlertCircle } from 'lucide-react';
-import { useLanguage } from '@/i18n/LanguageContext';
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
+import {
+  Send,
+  Mail,
+  Phone,
+  MessageCircle,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
-const WHATSAPP_URL = 'https://wa.me/201012266400';
-const PHONE = '01012266400';
-const EMAIL = 'ahmed.amr@emot.dev';
+const WHATSAPP_URL = "https://wa.me/201012266400";
+const PHONE = "01012266400";
+const EMAIL = "ahmoziaham@gmail.com";
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export function Contact() {
   const { t } = useLanguage();
-  const [form, setForm] = useState({ name: '', email: '', message: '', honeypot: '' });
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+    honeypot: "",
+  });
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+  const [errors, setErrors] = useState<{
+    name?: string;
+    email?: string;
+    message?: string;
+  }>({});
 
   const validate = () => {
     const e: { name?: string; email?: string; message?: string } = {};
-    if (!form.name.trim()) e.name = 'Required';
-    if (!form.email.trim()) e.email = 'Required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Invalid email';
-    if (!form.message.trim()) e.message = 'Required';
+    if (!form.name.trim()) e.name = "Required";
+    if (!form.email.trim()) e.email = "Required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      e.email = "Invalid email";
+    if (!form.message.trim()) e.message = "Required";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -28,26 +51,30 @@ export function Contact() {
     if (form.honeypot) return;
     if (!validate()) return;
 
-    setStatus('sending');
+    setStatus("sending");
     try {
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/contact-form`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-          apikey: import.meta.env.VITE_SUPABASE_ANON_KEY ?? '',
+      if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+        throw new Error("EmailJS is not configured");
+      }
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          reply_to: form.email,
+          message: form.message,
+          to_email: EMAIL,
         },
-        body: JSON.stringify({ name: form.name, email: form.email, message: form.message }),
-      });
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
 
-      if (!response.ok) throw new Error('Failed to send');
-
-      setStatus('success');
-      setForm({ name: '', email: '', message: '', honeypot: '' });
-      setTimeout(() => setStatus('idle'), 5000);
+      setStatus("success");
+      setForm({ name: "", email: "", message: "", honeypot: "" });
+      setTimeout(() => setStatus("idle"), 5000);
     } catch {
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
     }
   };
 
@@ -58,7 +85,7 @@ export function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
           className="mb-16 text-center"
         >
@@ -76,7 +103,7 @@ export function Contact() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
             className="flex flex-col gap-4"
           >
@@ -91,8 +118,12 @@ export function Contact() {
                 <MessageCircle className="h-6 w-6" />
               </div>
               <div>
-                <div className="text-xs text-slate-500">{t.contact.whatsapp}</div>
-                <div className="font-mono text-base font-bold text-white">{PHONE}</div>
+                <div className="text-xs text-slate-500">
+                  {t.contact.whatsapp}
+                </div>
+                <div className="font-mono text-base font-bold text-white">
+                  {PHONE}
+                </div>
               </div>
             </a>
 
@@ -106,7 +137,9 @@ export function Contact() {
               </div>
               <div>
                 <div className="text-xs text-slate-500">{t.contact.phone}</div>
-                <div className="font-mono text-base font-bold text-white">{PHONE}</div>
+                <div className="font-mono text-base font-bold text-white">
+                  {PHONE}
+                </div>
               </div>
             </a>
 
@@ -119,8 +152,12 @@ export function Contact() {
                 <Mail className="h-6 w-6" />
               </div>
               <div>
-                <div className="text-xs text-slate-500">{t.contact.emailLabel}</div>
-                <div className="font-mono text-base font-bold text-white">{EMAIL}</div>
+                <div className="text-xs text-slate-500">
+                  {t.contact.emailLabel}
+                </div>
+                <div className="font-mono text-base font-bold text-white">
+                  {EMAIL}
+                </div>
               </div>
             </a>
           </motion.div>
@@ -130,7 +167,7 @@ export function Contact() {
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
             className="rounded-2xl glass-card p-6 sm:p-8"
           >
@@ -149,60 +186,78 @@ export function Contact() {
             <div className="space-y-5">
               {/* Name */}
               <div>
-                <label className="mb-2 block text-sm font-medium text-slate-300">{t.contact.name}</label>
+                <label className="mb-2 block text-sm font-medium text-slate-300">
+                  {t.contact.name}
+                </label>
                 <input
                   type="text"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder={t.contact.namePlaceholder}
                   className={`w-full rounded-xl border bg-space-300/50 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-cyber/60 ${
-                    errors.name ? 'border-crimson/50' : 'border-white/10'
+                    errors.name ? "border-crimson/50" : "border-white/10"
                   }`}
                 />
-                {errors.name && <p className="mt-1 text-xs text-crimson">{errors.name}</p>}
+                {errors.name && (
+                  <p className="mt-1 text-xs text-crimson">{errors.name}</p>
+                )}
               </div>
 
               {/* Email */}
               <div>
-                <label className="mb-2 block text-sm font-medium text-slate-300">{t.contact.email}</label>
+                <label className="mb-2 block text-sm font-medium text-slate-300">
+                  {t.contact.email}
+                </label>
                 <input
                   type="email"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  placeholder={t.contact.emailPlaceholder}
+                  placeholder={EMAIL}
                   className={`w-full rounded-xl border bg-space-300/50 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-cyber/60 ${
-                    errors.email ? 'border-crimson/50' : 'border-white/10'
+                    errors.email ? "border-crimson/50" : "border-white/10"
                   }`}
                 />
-                {errors.email && <p className="mt-1 text-xs text-crimson">{errors.email}</p>}
+                {errors.email && (
+                  <p className="mt-1 text-xs text-crimson">{errors.email}</p>
+                )}
               </div>
 
               {/* Message */}
               <div>
-                <label className="mb-2 block text-sm font-medium text-slate-300">{t.contact.message}</label>
+                <label className="mb-2 block text-sm font-medium text-slate-300">
+                  {t.contact.message}
+                </label>
                 <textarea
                   value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  onChange={(e) =>
+                    setForm({ ...form, message: e.target.value })
+                  }
                   placeholder={t.contact.messagePlaceholder}
                   rows={4}
                   className={`w-full resize-none rounded-xl border bg-space-300/50 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-cyber/60 ${
-                    errors.message ? 'border-crimson/50' : 'border-white/10'
+                    errors.message ? "border-crimson/50" : "border-white/10"
                   }`}
                 />
-                {errors.message && <p className="mt-1 text-xs text-crimson">{errors.message}</p>}
+                {errors.message && (
+                  <p className="mt-1 text-xs text-crimson">{errors.message}</p>
+                )}
               </div>
 
               {/* Submit */}
               <button
                 type="submit"
-                disabled={status === 'sending'}
+                disabled={status === "sending"}
                 className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyber to-mint py-3.5 text-sm font-bold text-space-400 shadow-[0_0_20px_rgba(0,212,255,0.3)] transition-all hover:shadow-[0_0_40px_rgba(0,212,255,0.5)] disabled:opacity-50"
               >
-                {status === 'sending' ? (
+                {status === "sending" ? (
                   <>
                     <motion.div
                       animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                      transition={{
+                        duration: 1,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
                       className="h-4 w-4 rounded-full border-2 border-space-400 border-t-transparent"
                     />
                     {t.contact.sending}
@@ -216,7 +271,7 @@ export function Contact() {
               </button>
 
               {/* Status messages */}
-              {status === 'success' && (
+              {status === "success" && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -226,7 +281,7 @@ export function Contact() {
                   {t.contact.success}
                 </motion.div>
               )}
-              {status === 'error' && (
+              {status === "error" && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
