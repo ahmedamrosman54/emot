@@ -115,6 +115,14 @@ export function About() {
                     "Node.js",
                     "Cloud",
                     "Docker",
+                    "ES6",
+                    "Tailwind CSS",
+                    "Angular.js",
+                    "MongoDB",
+                    "NestJS",
+                    "Express.js",
+                    "Python",
+                    "AI",
                   ].map((tech) => (
                     <span
                       key={tech}
