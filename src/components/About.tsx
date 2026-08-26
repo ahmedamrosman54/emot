@@ -47,7 +47,7 @@ export function About() {
   ];
 
   const stats = [
-    { value: "5+", label: t.about.experience },
+    { value: "2.5", label: t.about.experience },
     { value: "50+", label: t.about.projects },
     { value: "40+", label: t.about.clients },
     { value: "99.9%", label: t.about.uptime },
