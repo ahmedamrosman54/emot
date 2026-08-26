@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <filter id="strong-neon" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="4" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="soft-neon" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+  <circle cx="18" cy="18" r="14" fill="#3aff9e" fill-opacity="0.12" stroke="#3aff9e" stroke-width="2" filter="url(#soft-neon)"/>
+  <circle cx="18" cy="18" r="11" fill="none" stroke="#b7ffd8" stroke-width="2.5" filter="url(#strong-neon)"/>
+  <circle cx="18" cy="18" r="8" fill="none" stroke="#3aff9e" stroke-width="1.5" opacity="0.95"/>
+</svg>
