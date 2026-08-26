@@ -13,7 +13,7 @@ export function Hero() {
   const stats = [
     { value: "50+", label: t.hero.stat1Label },
     { value: "97.5%", label: t.hero.stat2Label },
-    { value: "5+", label: t.hero.stat3Label },
+    { value: "2.5", label: t.hero.stat3Label },
   ];
 
   return (
