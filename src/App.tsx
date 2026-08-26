@@ -3,7 +3,6 @@ import { LanguageProvider } from "@/i18n/LanguageContext";
 import { AuroraGrid } from "@/components/AuroraGrid";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { CustomCursor } from "@/components/CustomCursor";
 
 const About = lazy(() =>
   import("@/components/About").then(({ About }) => ({ default: About })),
@@ -70,7 +69,6 @@ function App() {
 
   return (
     <LanguageProvider>
-      <CustomCursor />
       <div className="relative min-h-screen bg-space-400 text-slate-200">
         <AuroraGrid />
         <div className="relative z-10">
