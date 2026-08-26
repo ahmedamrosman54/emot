@@ -177,7 +177,7 @@ export function Contact() {
               name="company"
               value={form.honeypot}
               onChange={(e) => setForm({ ...form, honeypot: e.target.value })}
-              className="absolute -left-[9999px] opacity-0"
+              className="sr-only"
               tabIndex={-1}
               autoComplete="off"
               aria-hidden="true"

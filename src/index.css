@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --bg: #0B0F19;
-  --cyber: #00d4ff;
+    --bg: #0b0f19;
+    --cyber: #00d4ff;
     --crimson: #ff3b5c;
     --mint: #3aff9e;
   }
@@ -16,23 +16,24 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     background-color: var(--bg);
     color: #e2e8f0;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  [dir='rtl'] body {
-    font-family: 'Cairo', sans-serif;
+  [dir="rtl"] body {
+    font-family: "Cairo", sans-serif;
   }
 
-  [dir='rtl'] .font-mono {
-    font-family: 'Cairo', sans-serif;
+  [dir="rtl"] .font-mono {
+    font-family: "Cairo", sans-serif;
   }
 
   ::selection {
@@ -46,7 +47,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0B0F19;
+    background: #0b0f19;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -76,32 +77,44 @@
 
   .neon-text-cyber {
     color: #00d4ff;
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.6), 0 0 20px rgba(0, 212, 255, 0.3);
+    text-shadow:
+      0 0 10px rgba(0, 212, 255, 0.6),
+      0 0 20px rgba(0, 212, 255, 0.3);
   }
 
   .neon-text-mint {
     color: #3aff9e;
-    text-shadow: 0 0 10px rgba(58, 255, 158, 0.6), 0 0 20px rgba(58, 255, 158, 0.3);
+    text-shadow:
+      0 0 10px rgba(58, 255, 158, 0.6),
+      0 0 20px rgba(58, 255, 158, 0.3);
   }
 
   .neon-text-crimson {
     color: #ff3b5c;
-    text-shadow: 0 0 10px rgba(255, 59, 92, 0.6), 0 0 20px rgba(255, 59, 92, 0.3);
+    text-shadow:
+      0 0 10px rgba(255, 59, 92, 0.6),
+      0 0 20px rgba(255, 59, 92, 0.3);
   }
 
   .neon-border-cyber {
     border-color: rgba(0, 212, 255, 0.4);
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2), inset 0 0 15px rgba(0, 212, 255, 0.05);
+    box-shadow:
+      0 0 15px rgba(0, 212, 255, 0.2),
+      inset 0 0 15px rgba(0, 212, 255, 0.05);
   }
 
   .neon-border-mint {
     border-color: rgba(58, 255, 158, 0.4);
-    box-shadow: 0 0 15px rgba(58, 255, 158, 0.2), inset 0 0 15px rgba(58, 255, 158, 0.05);
+    box-shadow:
+      0 0 15px rgba(58, 255, 158, 0.2),
+      inset 0 0 15px rgba(58, 255, 158, 0.05);
   }
 
   .neon-border-crimson {
     border-color: rgba(255, 59, 92, 0.4);
-    box-shadow: 0 0 15px rgba(255, 59, 92, 0.2), inset 0 0 15px rgba(255, 59, 92, 0.05);
+    box-shadow:
+      0 0 15px rgba(255, 59, 92, 0.2),
+      inset 0 0 15px rgba(255, 59, 92, 0.05);
   }
 
   .text-gradient-neon {
@@ -144,11 +157,22 @@
   }
 
   .clip-corner {
-    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+    clip-path: polygon(
+      0 0,
+      calc(100% - 16px) 0,
+      100% 16px,
+      100% 100%,
+      16px 100%,
+      0 calc(100% - 16px)
+    );
   }
 }
 
 @keyframes shimmer {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
