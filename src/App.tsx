@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { AuroraGrid } from "@/components/AuroraGrid";
 import { Navbar } from "@/components/Navbar";
@@ -33,6 +33,32 @@ const Footer = lazy(() =>
 );
 
 function App() {
+  useEffect(() => {
+    let currentVersion: string | undefined;
+
+    const checkForUpdate = async () => {
+      try {
+        const response = await fetch(`/version.json?${Date.now()}`, {
+          cache: "no-store",
+        });
+        if (!response.ok) return;
+
+        const { version } = (await response.json()) as { version?: string };
+        if (!currentVersion) {
+          currentVersion = version;
+        } else if (version && version !== currentVersion) {
+          window.location.reload();
+        }
+      } catch {
+        // Ignore temporary network errors and retry on the next interval.
+      }
+    };
+
+    checkForUpdate();
+    const intervalId = window.setInterval(checkForUpdate, 30_000);
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   return (
     <LanguageProvider>
       <div className="relative min-h-screen bg-space-400 text-slate-200">
