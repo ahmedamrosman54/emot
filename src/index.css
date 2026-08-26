@@ -17,7 +17,7 @@
   @media (pointer: fine) {
     body {
       cursor:
-        url("/mac-cursor.svg") 2 1,
+        url("/mac-cursor.svg") 9 9,
         default;
     }
   }
