@@ -25,10 +25,14 @@ export function Starfield() {
     let stars: Star[] = [];
     let width = 0;
     let height = 0;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
     const isMobile = window.innerWidth < 768;
-    const starCount = isMobile ? 60 : 150;
+    const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2);
+
+    const starCount = isMobile ? 28 : 120;
+    const useGlow = !isMobile;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     function init() {
       if (!canvas || !ctx) return;
@@ -55,7 +59,6 @@ export function Starfield() {
     function draw() {
       if (!ctx) return;
       if (document.hidden) {
-        rafRef.current = requestAnimationFrame(draw);
         return;
       }
       ctx.clearRect(0, 0, width, height);
@@ -84,14 +87,16 @@ export function Starfield() {
         ctx.arc(px, py, star.size * star.z, 0, Math.PI * 2);
         ctx.fillStyle = star.color;
         ctx.globalAlpha = star.z * 0.8;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = star.color;
+        if (useGlow) {
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = star.color;
+        }
         ctx.fill();
       }
       ctx.globalAlpha = 1;
       ctx.shadowBlur = 0;
 
-      rafRef.current = requestAnimationFrame(draw);
+      if (!reduceMotion) rafRef.current = requestAnimationFrame(draw);
     }
 
     function handleResize() {
@@ -108,17 +113,26 @@ export function Starfield() {
       }
     }
 
+    function handleVisibilityChange() {
+      if (!document.hidden && !reduceMotion) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = requestAnimationFrame(draw);
+      }
+    }
+
     init();
     draw();
     window.addEventListener("resize", handleResize);
     window.addEventListener("mousemove", handleMouse, { passive: true });
     window.addEventListener("touchmove", handleTouch, { passive: true });
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouse);
       window.removeEventListener("touchmove", handleTouch);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 

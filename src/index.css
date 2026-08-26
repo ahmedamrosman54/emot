@@ -36,6 +36,26 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  @media (max-width: 767px) {
+    .animate-aurora-1,
+    .animate-aurora-2,
+    .animate-aurora-3,
+    .animate-grid-move {
+      animation: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
   [dir="rtl"] body {
     font-family: "Cairo", sans-serif;
   }
