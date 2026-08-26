@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0 0 54 54">
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
   <defs>
     <filter id="neon" x="-100%" y="-100%" width="300%" height="300%">
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
@@ -8,6 +8,6 @@
       </feMerge>
     </filter>
   </defs>
-  <circle cx="27" cy="27" r="21" fill="none" stroke="#3aff9e" stroke-width="1.5" stroke-opacity="0.45" filter="url(#neon)"/>
-  <circle cx="27" cy="27" r="16" fill="none" stroke="#3aff9e" stroke-width="3" filter="url(#neon)"/>
+  <circle cx="18" cy="18" r="14" fill="none" stroke="#3aff9e" stroke-width="1.5" stroke-opacity="0.45" filter="url(#neon)"/>
+  <circle cx="18" cy="18" r="11" fill="none" stroke="#3aff9e" stroke-width="3" filter="url(#neon)"/>
 </svg>
