@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Globe } from 'lucide-react';
-import { useLanguage } from '@/i18n/LanguageContext';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Globe } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
-const WHATSAPP_URL = 'https://wa.me/201012266400';
+const WHATSAPP_URL = "https://wa.me/201012266400";
 
 export function Navbar() {
   const { t, lang, toggleLang } = useLanguage();
@@ -12,29 +12,34 @@ export function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const navItems = [
-    { key: 'home', href: '#home' },
-    { key: 'about', href: '#about' },
-    { key: 'services', href: '#services' },
-    { key: 'portfolio', href: '#portfolio' },
-    { key: 'pricing', href: '#pricing' },
-    { key: 'testimonials', href: '#testimonials' },
-    { key: 'contact', href: '#contact' },
+    { key: "home", href: "#home" },
+    { key: "about", href: "#about" },
+    { key: "services", href: "#services" },
+    { key: "portfolio", href: "#portfolio" },
+    { key: "pricing", href: "#pricing" },
+    { key: "testimonials", href: "#testimonials" },
+    { key: "contact", href: "#contact" },
   ] as const;
 
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      dir={t.dir}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass shadow-lg shadow-cyber/5' : 'bg-transparent'
+        scrolled ? "glass shadow-lg shadow-cyber/5" : "bg-transparent"
       }`}
-      style={{ borderBottom: scrolled ? '1px solid rgba(0, 212, 255, 0.15)' : '1px solid transparent' }}
+      style={{
+        borderBottom: scrolled
+          ? "1px solid rgba(0, 212, 255, 0.15)"
+          : "1px solid transparent",
+      }}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
@@ -47,7 +52,7 @@ export function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden items-center gap-1 lg:flex">
+        <div className="hidden min-w-0 items-center gap-1 xl:flex">
           {navItems.map((item, i) => (
             <motion.a
               key={item.key}
@@ -71,7 +76,7 @@ export function Navbar() {
             aria-label="Toggle language"
           >
             <Globe className="h-4 w-4" />
-            <span className="font-mono">{lang === 'en' ? 'ع' : 'EN'}</span>
+            <span className="font-mono">{lang === "en" ? "ع" : "EN"}</span>
           </button>
 
           {/* CTA */}
@@ -79,7 +84,7 @@ export function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden rounded-full bg-gradient-to-r from-cyber to-mint px-5 py-2 text-sm font-bold text-space-400 shadow-[0_0_20px_rgba(0,212,255,0.3)] transition-all hover:shadow-[0_0_30px_rgba(0,212,255,0.5)] sm:block"
+            className="hidden rounded-full bg-gradient-to-r from-cyber to-mint px-5 py-2 text-sm font-bold text-space-400 shadow-[0_0_20px_rgba(0,212,255,0.3)] transition-all hover:shadow-[0_0_30px_rgba(0,212,255,0.5)] xl:block"
           >
             {t.nav.cta}
           </a>
@@ -87,10 +92,14 @@ export function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="rounded-lg p-2 text-slate-300 transition-colors hover:text-cyber lg:hidden"
+            className="rounded-lg p-2 text-slate-300 transition-colors hover:text-cyber xl:hidden"
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </button>
         </div>
       </div>
@@ -100,10 +109,10 @@ export function Navbar() {
         {mobileOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
+            animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden glass lg:hidden"
+            className="overflow-hidden glass xl:hidden"
           >
             <div className="flex flex-col gap-1 px-4 py-4">
               {navItems.map((item, i) => (
@@ -111,7 +120,7 @@ export function Navbar() {
                   key={item.key}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  initial={{ opacity: 0, x: lang === 'ar' ? 20 : -20 }}
+                  initial={{ opacity: 0, x: lang === "ar" ? 20 : -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 * i }}
                   className="rounded-lg px-4 py-3 text-sm font-medium text-slate-300 transition-colors hover:bg-cyber/10 hover:text-cyber"
