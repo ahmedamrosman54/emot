@@ -1,12 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0 0 54 54">
   <defs>
     <filter id="neon" x="-100%" y="-100%" width="300%" height="300%">
-      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
-  <circle cx="27" cy="27" r="18" fill="#3aff9e" filter="url(#neon)"/>
+  <circle cx="27" cy="27" r="21" fill="none" stroke="#3aff9e" stroke-width="1.5" stroke-opacity="0.45" filter="url(#neon)"/>
+  <circle cx="27" cy="27" r="16" fill="none" stroke="#3aff9e" stroke-width="3" filter="url(#neon)"/>
 </svg>
