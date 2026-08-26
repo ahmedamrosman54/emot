@@ -55,8 +55,16 @@ function App() {
     };
 
     checkForUpdate();
-    const intervalId = window.setInterval(checkForUpdate, 30_000);
-    return () => window.clearInterval(intervalId);
+    const intervalId = window.setInterval(checkForUpdate, 10_000);
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") checkForUpdate();
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      window.clearInterval(intervalId);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
   }, []);
 
   return (
