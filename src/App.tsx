@@ -1,14 +1,16 @@
+import { lazy, Suspense } from 'react';
 import { LanguageProvider } from '@/i18n/LanguageContext';
 import { AuroraGrid } from '@/components/AuroraGrid';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
-import { About } from '@/components/About';
-import { Services } from '@/components/Services';
-import { Portfolio } from '@/components/Portfolio';
-import { Pricing } from '@/components/Pricing';
-import { Testimonials } from '@/components/Testimonials';
-import { Contact } from '@/components/Contact';
-import { Footer } from '@/components/Footer';
+
+const About = lazy(() => import('@/components/About').then(({ About }) => ({ default: About })));
+const Services = lazy(() => import('@/components/Services').then(({ Services }) => ({ default: Services })));
+const Portfolio = lazy(() => import('@/components/Portfolio').then(({ Portfolio }) => ({ default: Portfolio })));
+const Pricing = lazy(() => import('@/components/Pricing').then(({ Pricing }) => ({ default: Pricing })));
+const Testimonials = lazy(() => import('@/components/Testimonials').then(({ Testimonials }) => ({ default: Testimonials })));
+const Contact = lazy(() => import('@/components/Contact').then(({ Contact }) => ({ default: Contact })));
+const Footer = lazy(() => import('@/components/Footer').then(({ Footer }) => ({ default: Footer })));
 
 function App() {
   return (
@@ -19,14 +21,16 @@ function App() {
           <Navbar />
           <main>
             <Hero />
-            <About />
-            <Services />
-            <Portfolio />
-            <Pricing />
-            <Testimonials />
-            <Contact />
+            <Suspense fallback={null}>
+              <About />
+              <Services />
+              <Portfolio />
+              <Pricing />
+              <Testimonials />
+              <Contact />
+              <Footer />
+            </Suspense>
           </main>
-          <Footer />
         </div>
       </div>
     </LanguageProvider>
