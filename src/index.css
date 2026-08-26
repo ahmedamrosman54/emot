@@ -194,29 +194,29 @@
   .custom-cursor {
     width: 36px;
     height: 36px;
-    border: 1px solid rgba(0, 212, 255, 0.8);
+    border: 2px solid #ffffff;
     border-radius: 50%;
     box-shadow:
-      0 0 10px rgba(0, 212, 255, 0.35),
-      inset 0 0 8px rgba(58, 255, 158, 0.2);
+      0 0 10px rgba(255, 255, 255, 0.85),
+      0 0 20px rgba(0, 212, 255, 0.55);
   }
 
   .custom-cursor-dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #3aff9e;
-    box-shadow: 0 0 10px rgba(58, 255, 158, 0.9);
+    background: #ffe66d;
+    box-shadow: 0 0 10px rgba(255, 230, 109, 1);
   }
 
   .custom-cursor-hover {
     width: 52px;
     height: 52px;
     margin: -8px;
-    border-color: rgba(58, 255, 158, 0.9);
+    border-color: #ffe66d;
     box-shadow:
-      0 0 16px rgba(58, 255, 158, 0.45),
-      inset 0 0 12px rgba(0, 212, 255, 0.25);
+      0 0 16px rgba(255, 230, 109, 0.75),
+      0 0 26px rgba(0, 212, 255, 0.55);
   }
 
   .custom-cursor-hidden {
