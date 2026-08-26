@@ -3,6 +3,7 @@ import { LanguageProvider } from "@/i18n/LanguageContext";
 import { AuroraGrid } from "@/components/AuroraGrid";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { Chatbot } from "@/components/Chatbot";
 
 const About = lazy(() =>
   import("@/components/About").then(({ About }) => ({ default: About })),
@@ -81,6 +82,7 @@ function App() {
               <Portfolio />
               <Pricing />
               <Testimonials />
+              <Chatbot />
               <Contact />
               <Footer />
             </Suspense>
