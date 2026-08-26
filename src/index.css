@@ -14,6 +14,14 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  @media (pointer: fine) {
+    body {
+      cursor:
+        url("/mac-cursor.svg") 3 2,
+        default;
+    }
+  }
+
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
