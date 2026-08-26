@@ -91,6 +91,20 @@
         } else {
           window.addEventListener("load", onLoad);
         }
+
+        const resizeChatbaseBubble = () => {
+          const bubble = document.querySelector(
+            "[id*='chatbase'], [class*='chatbase']",
+          );
+          if (!(bubble instanceof HTMLElement)) return;
+          bubble.style.transform = "scale(0.85)";
+          bubble.style.transformOrigin = "bottom right";
+        };
+        new MutationObserver(resizeChatbaseBubble).observe(document.body, {
+          childList: true,
+          subtree: true,
+        });
+        window.addEventListener("load", resizeChatbaseBubble);
       })();
     </script>
   </body>
