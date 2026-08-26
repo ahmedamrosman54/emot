@@ -16,6 +16,24 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleNavigation = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = event.currentTarget.getAttribute("href");
+    if (!href?.startsWith("#")) return;
+
+    const target = document.querySelector<HTMLElement>(href);
+    if (!target) return;
+
+    event.preventDefault();
+    const navbarHeight =
+      event.currentTarget.closest("nav")?.getBoundingClientRect().height ?? 0;
+    const targetTop =
+      target.getBoundingClientRect().top + window.scrollY - navbarHeight;
+
+    window.history.pushState(null, "", href);
+    window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+    setMobileOpen(false);
+  };
+
   const navItems = [
     { key: "home", href: "#home" },
     { key: "about", href: "#about" },
@@ -43,7 +61,11 @@ export function Navbar() {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2">
+        <a
+          href="#home"
+          onClick={handleNavigation}
+          className="flex items-center gap-2"
+        >
           <span className="font-mono text-2xl font-bold tracking-tight">
             <span className="text-white">e</span>
             <span className="text-gradient-neon">mot</span>
@@ -57,6 +79,7 @@ export function Navbar() {
             <motion.a
               key={item.key}
               href={item.href}
+              onClick={handleNavigation}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 * i + 0.2, duration: 0.3 }}
@@ -119,7 +142,7 @@ export function Navbar() {
                 <motion.a
                   key={item.key}
                   href={item.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={handleNavigation}
                   initial={{ opacity: 0, x: lang === "ar" ? 20 : -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 * i }}
