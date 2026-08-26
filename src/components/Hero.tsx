@@ -11,7 +11,7 @@ export function Hero() {
   const buttonRef = useRef<HTMLAnchorElement>(null);
 
   const stats = [
-    { value: "50+", label: t.hero.stat1Label },
+    { value: "35", label: t.hero.stat1Label },
     { value: "97.5%", label: t.hero.stat2Label },
     { value: "2.5", label: t.hero.stat3Label },
   ];
