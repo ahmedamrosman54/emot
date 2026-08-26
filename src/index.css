@@ -14,6 +14,17 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  @media (pointer: fine) {
+    body,
+    a,
+    button,
+    input,
+    textarea,
+    select {
+      cursor: none;
+    }
+  }
+
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
@@ -165,6 +176,58 @@
       16px 100%,
       0 calc(100% - 16px)
     );
+  }
+
+  .custom-cursor,
+  .custom-cursor-dot {
+    pointer-events: none;
+    position: fixed;
+    z-index: 100;
+    transition:
+      opacity 180ms ease,
+      transform 120ms ease-out,
+      width 180ms ease,
+      height 180ms ease,
+      margin 180ms ease;
+  }
+
+  .custom-cursor {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(0, 212, 255, 0.8);
+    border-radius: 50%;
+    box-shadow:
+      0 0 10px rgba(0, 212, 255, 0.35),
+      inset 0 0 8px rgba(58, 255, 158, 0.2);
+  }
+
+  .custom-cursor-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3aff9e;
+    box-shadow: 0 0 10px rgba(58, 255, 158, 0.9);
+  }
+
+  .custom-cursor-hover {
+    width: 52px;
+    height: 52px;
+    margin: -8px;
+    border-color: rgba(58, 255, 158, 0.9);
+    box-shadow:
+      0 0 16px rgba(58, 255, 158, 0.45),
+      inset 0 0 12px rgba(0, 212, 255, 0.25);
+  }
+
+  .custom-cursor-hidden {
+    opacity: 0;
+  }
+
+  @media (pointer: coarse) {
+    .custom-cursor,
+    .custom-cursor-dot {
+      display: none;
+    }
   }
 }
 
