@@ -1,13 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  Cloud,
-  Database,
-  Zap,
-  Workflow,
-  Code2,
-  Server,
-  Cpu,
-} from "lucide-react";
+import { Cloud, Database, Zap, Workflow, Code2 } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const fadeUp = {

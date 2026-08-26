@@ -1,40 +1,64 @@
-import { motion } from 'framer-motion';
-import { ArrowUpRight, ExternalLink } from 'lucide-react';
-import { useLanguage } from '@/i18n/LanguageContext';
+import { motion } from "framer-motion";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const PROJECT_IMAGES = [
-  'https://images.pexels.com/photos/27141316/pexels-photo-27141316.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'https://images.pexels.com/photos/32026177/pexels-photo-32026177.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'https://images.pexels.com/photos/33158875/pexels-photo-33158875.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'https://images.pexels.com/photos/27141307/pexels-photo-27141307.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'https://images.pexels.com/photos/33433724/pexels-photo-33433724.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'https://images.pexels.com/photos/32026165/pexels-photo-32026165.jpeg?auto=compress&cs=tinysrgb&w=800',
+  "https://images.pexels.com/photos/27141316/pexels-photo-27141316.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/32026177/pexels-photo-32026177.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/33158875/pexels-photo-33158875.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/27141307/pexels-photo-27141307.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/33433724/pexels-photo-33433724.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/32026165/pexels-photo-32026165.jpeg?auto=compress&cs=tinysrgb&w=800",
 ];
 
-const WHATSAPP_URL = 'https://wa.me/201012266400';
+const WHATSAPP_URL = "https://wa.me/201012266400";
 
 export function Portfolio() {
   const { t } = useLanguage();
 
   const projects = [
-    { title: t.portfolio.project1Title, category: t.portfolio.project1Category, color: 'cyber' },
-    { title: t.portfolio.project2Title, category: t.portfolio.project2Category, color: 'mint' },
-    { title: t.portfolio.project3Title, category: t.portfolio.project3Category, color: 'crimson' },
-    { title: t.portfolio.project4Title, category: t.portfolio.project4Category, color: 'cyber' },
-    { title: t.portfolio.project5Title, category: t.portfolio.project5Category, color: 'mint' },
-    { title: t.portfolio.project6Title, category: t.portfolio.project6Category, color: 'crimson' },
+    {
+      title: t.portfolio.project1Title,
+      category: t.portfolio.project1Category,
+      color: "cyber",
+    },
+    {
+      title: t.portfolio.project2Title,
+      category: t.portfolio.project2Category,
+      color: "mint",
+    },
+    {
+      title: t.portfolio.project3Title,
+      category: t.portfolio.project3Category,
+      color: "crimson",
+    },
+    {
+      title: t.portfolio.project4Title,
+      category: t.portfolio.project4Category,
+      color: "cyber",
+    },
+    {
+      title: t.portfolio.project5Title,
+      category: t.portfolio.project5Category,
+      color: "mint",
+    },
+    {
+      title: t.portfolio.project6Title,
+      category: t.portfolio.project6Category,
+      color: "crimson",
+    },
   ];
 
   const colorMap = {
-    cyber: 'border-cyber/40 shadow-[0_0_20px_rgba(0,212,255,0.15)]',
-    mint: 'border-mint/40 shadow-[0_0_20px_rgba(58,255,158,0.15)]',
-    crimson: 'border-crimson/40 shadow-[0_0_20px_rgba(255,59,92,0.15)]',
+    cyber: "border-cyber/40 shadow-[0_0_20px_rgba(0,212,255,0.15)]",
+    mint: "border-mint/40 shadow-[0_0_20px_rgba(58,255,158,0.15)]",
+    crimson: "border-crimson/40 shadow-[0_0_20px_rgba(255,59,92,0.15)]",
   };
 
   const textColorMap = {
-    cyber: 'text-cyber',
-    mint: 'text-mint',
-    crimson: 'text-crimson',
+    cyber: "text-cyber",
+    mint: "text-mint",
+    crimson: "text-crimson",
   };
 
   return (
@@ -44,7 +68,7 @@ export function Portfolio() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
           className="mb-16 text-center"
         >
@@ -65,8 +89,13 @@ export function Portfolio() {
               custom={i}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: i * 0.1, type: 'spring', bounce: 0.3 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.5,
+                delay: i * 0.1,
+                type: "spring",
+                bounce: 0.3,
+              }}
               className={`group relative aspect-[4/3] overflow-hidden rounded-2xl border bg-space-200 ${colorMap[project.color as keyof typeof colorMap]}`}
             >
               {/* Image */}
@@ -74,6 +103,7 @@ export function Portfolio() {
                 src={PROJECT_IMAGES[i]}
                 alt={project.title}
                 loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover opacity-40 transition-all duration-500 group-hover:scale-110 group-hover:opacity-60"
               />
 
@@ -82,10 +112,14 @@ export function Portfolio() {
 
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <span className={`text-xs font-bold uppercase tracking-wider ${textColorMap[project.color as keyof typeof textColorMap]}`}>
+                <span
+                  className={`text-xs font-bold uppercase tracking-wider ${textColorMap[project.color as keyof typeof textColorMap]}`}
+                >
                   {project.category}
                 </span>
-                <h3 className="mt-1 font-mono text-xl font-bold text-white">{project.title}</h3>
+                <h3 className="mt-1 font-mono text-xl font-bold text-white">
+                  {project.title}
+                </h3>
 
                 {/* Mobile: always visible button */}
                 <a

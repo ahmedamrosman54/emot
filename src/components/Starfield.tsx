@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 interface Star {
   x: number;
@@ -9,7 +9,7 @@ interface Star {
   speed: number;
 }
 
-const COLORS = ['#00d4ff', '#3aff9e', '#ff3b5c', '#ffffff'];
+const COLORS = ["#00d4ff", "#3aff9e", "#ff3b5c", "#ffffff"];
 
 export function Starfield() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -19,7 +19,7 @@ export function Starfield() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let stars: Star[] = [];
@@ -36,6 +36,7 @@ export function Starfield() {
       height = canvas.clientHeight;
       canvas.width = width * dpr;
       canvas.height = height * dpr;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
 
       stars = [];
@@ -53,6 +54,10 @@ export function Starfield() {
 
     function draw() {
       if (!ctx) return;
+      if (document.hidden) {
+        rafRef.current = requestAnimationFrame(draw);
+        return;
+      }
       ctx.clearRect(0, 0, width, height);
 
       const mx = mouseRef.current.x;
@@ -105,15 +110,15 @@ export function Starfield() {
 
     init();
     draw();
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('mousemove', handleMouse, { passive: true });
-    window.addEventListener('touchmove', handleTouch, { passive: true });
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("mousemove", handleMouse, { passive: true });
+    window.addEventListener("touchmove", handleTouch, { passive: true });
 
     return () => {
       cancelAnimationFrame(rafRef.current);
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouse);
-      window.removeEventListener('touchmove', handleTouch);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", handleMouse);
+      window.removeEventListener("touchmove", handleTouch);
     };
   }, []);
 
@@ -121,7 +126,7 @@ export function Starfield() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 h-full w-full"
-      style={{ pointerEvents: 'none' }}
+      style={{ pointerEvents: "none" }}
       aria-hidden="true"
     />
   );

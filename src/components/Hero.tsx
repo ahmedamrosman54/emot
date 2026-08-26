@@ -1,19 +1,19 @@
-import { useRef } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
-import { useLanguage } from '@/i18n/LanguageContext';
-import { Starfield } from './Starfield';
+import { useRef } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { Starfield } from "./Starfield";
 
-const WHATSAPP_URL = 'https://wa.me/201012266400';
+const WHATSAPP_URL = "https://wa.me/201012266400";
 
 export function Hero() {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const buttonRef = useRef<HTMLAnchorElement>(null);
 
   const stats = [
-    { value: '50+', label: t.hero.stat1Label },
-    { value: '100%', label: t.hero.stat2Label },
-    { value: '5+', label: t.hero.stat3Label },
+    { value: "50+", label: t.hero.stat1Label },
+    { value: "100%", label: t.hero.stat2Label },
+    { value: "5+", label: t.hero.stat3Label },
   ];
 
   return (
@@ -42,7 +42,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-mono text-4xl font-bold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl"
         >
-          {t.hero.titleLine1}{' '}
+          {t.hero.titleLine1}{" "}
           <span className="text-gradient-triple">{t.hero.titleHighlight}</span>
           <br />
           {t.hero.titleLine2}
@@ -95,7 +95,9 @@ export function Hero() {
               <div className="font-mono text-3xl font-bold text-gradient-neon sm:text-4xl">
                 {stat.value}
               </div>
-              <div className="mt-1 text-xs text-slate-500 sm:text-sm">{stat.label}</div>
+              <div className="mt-1 text-xs text-slate-500 sm:text-sm">
+                {stat.label}
+              </div>
             </div>
           ))}
         </motion.div>
