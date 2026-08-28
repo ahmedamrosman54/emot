@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://emot.dev/sitemap.xml
+Sitemap: https://emot-beryl.vercel.app/sitemap.xml
