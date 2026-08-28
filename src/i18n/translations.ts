@@ -222,7 +222,7 @@ export const translations: Record<Language, Translation> = {
       popular: "Most Popular",
       perProject: "/ project",
       package1Name: "Standard",
-      package1Price: "$75",
+      package1Price: "$199",
       package1Features: [
         "Identity showcase website",
         "Free hosting included",
@@ -231,7 +231,7 @@ export const translations: Record<Language, Translation> = {
         "Basic SEO setup",
       ],
       package2Name: "Premium",
-      package2Price: "$150",
+      package2Price: "$299",
       package2Features: [
         "Full customer & product database",
         "Data control & monitoring page",
@@ -241,7 +241,7 @@ export const translations: Record<Language, Translation> = {
         "Analytics integration",
       ],
       package3Name: "Ultra",
-      package3Price: "$230",
+      package3Price: "$349",
       package3Features: [
         "Full customer & product database",
         "Data control & monitoring page",
@@ -408,7 +408,7 @@ export const translations: Record<Language, Translation> = {
       popular: "الأكثر طلباً",
       perProject: "/ مشروع",
       package1Name: "الباقة العادية",
-      package1Price: "$75",
+      package1Price: "$199",
       package1Features: [
         "موقع إلكتروني لعرض الهوية",
         "استضافة مجانية",
@@ -417,7 +417,7 @@ export const translations: Record<Language, Translation> = {
         "إعداد SEO أساسي",
       ],
       package2Name: "الباقة المميزة",
-      package2Price: "$150",
+      package2Price: "$299",
       package2Features: [
         "موقع متكامل لقواعد بيانات العملاء والمنتجات",
         "صفحة للتحكم في البيانات ومتابعتها",
@@ -427,7 +427,7 @@ export const translations: Record<Language, Translation> = {
         "تكامل التحليلات",
       ],
       package3Name: "باقة الالترا",
-      package3Price: "$230",
+      package3Price: "$349",
       package3Features: [
         "موقع متكامل لقواعد بيانات العملاء والمنتجات",
         "صفحة للتحكم في البيانات ومتابعتها",
