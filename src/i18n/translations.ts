@@ -312,7 +312,8 @@ export const translations: Record<Language, Translation> = {
       email: "Email Address",
       emailPlaceholder: "john@example.com",
       message: "Project Details",
-      messagePlaceholder: "Tell me about your project...",
+      messagePlaceholder:
+        "Tell me about your project and add your preferred contact method...",
       send: "Send Message",
       sending: "Sending...",
       success: "Message sent successfully! I will get back to you soon.",
@@ -511,7 +512,8 @@ export const translations: Record<Language, Translation> = {
       email: "البريد الإلكتروني",
       emailPlaceholder: "mohamed@example.com",
       message: "تفاصيل المشروع",
-      messagePlaceholder: "أخبرني عن مشروعك...",
+      messagePlaceholder:
+        "أخبرني عن مشروعك، ويرجى إضافة طريقة التواصل المناسبة معك أيضًا...",
       send: "إرسال الرسالة",
       sending: "جاري الإرسال...",
       success: "تم إرسال الرسالة بنجاح! سأعود إليك قريباً.",
