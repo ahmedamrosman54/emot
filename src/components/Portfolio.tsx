@@ -3,10 +3,10 @@ import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const PROJECT_IMAGES = [
-  "https://image.thum.io/get/width/800/crop/600/https://grocery-delivery-gs.vercel.app/",
-  "https://image.thum.io/get/width/800/crop/600/https://realestatewebsite-blue.vercel.app/",
-  "https://image.thum.io/get/width/800/crop/600/https://hb-gs.vercel.app/",
-  "https://image.thum.io/get/width/800/crop/600/https://prescripto.vercel.app/",
+  "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85",
 ];
 
 const PROJECT_LINKS = [
