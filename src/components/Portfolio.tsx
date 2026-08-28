@@ -7,11 +7,14 @@ const PROJECT_IMAGES = [
   "https://images.pexels.com/photos/32026177/pexels-photo-32026177.jpeg?auto=compress&cs=tinysrgb&w=800",
   "https://images.pexels.com/photos/33158875/pexels-photo-33158875.jpeg?auto=compress&cs=tinysrgb&w=800",
   "https://images.pexels.com/photos/27141307/pexels-photo-27141307.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "https://images.pexels.com/photos/33433724/pexels-photo-33433724.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "https://images.pexels.com/photos/32026165/pexels-photo-32026165.jpeg?auto=compress&cs=tinysrgb&w=800",
 ];
 
-const WHATSAPP_URL = "https://wa.me/201012266400";
+const PROJECT_LINKS = [
+  "https://grocery-delivery-gs.vercel.app/",
+  "https://realestatewebsite-blue.vercel.app/",
+  "https://hb-gs.vercel.app/",
+  "https://prescripto.vercel.app/",
+];
 
 export function Portfolio() {
   const { t } = useLanguage();
@@ -20,32 +23,26 @@ export function Portfolio() {
     {
       title: t.portfolio.project1Title,
       category: t.portfolio.project1Category,
+      link: PROJECT_LINKS[0],
       color: "cyber",
     },
     {
       title: t.portfolio.project2Title,
       category: t.portfolio.project2Category,
+      link: PROJECT_LINKS[1],
       color: "mint",
     },
     {
       title: t.portfolio.project3Title,
       category: t.portfolio.project3Category,
+      link: PROJECT_LINKS[2],
       color: "crimson",
     },
     {
       title: t.portfolio.project4Title,
       category: t.portfolio.project4Category,
+      link: PROJECT_LINKS[3],
       color: "cyber",
-    },
-    {
-      title: t.portfolio.project5Title,
-      category: t.portfolio.project5Category,
-      color: "mint",
-    },
-    {
-      title: t.portfolio.project6Title,
-      category: t.portfolio.project6Category,
-      color: "crimson",
     },
   ];
 
@@ -123,7 +120,7 @@ export function Portfolio() {
 
                 {/* Mobile: always visible button */}
                 <a
-                  href={WHATSAPP_URL}
+                  href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 flex items-center justify-center gap-2 rounded-lg border border-cyber/40 bg-cyber/10 px-4 py-2.5 text-sm font-bold text-cyber backdrop-blur-sm transition-colors hover:bg-cyber/20 lg:hidden"
@@ -136,7 +133,7 @@ export function Portfolio() {
                 <div className="mt-4 hidden lg:block">
                   <div className="translate-y-[150%] opacity-0 transition-all duration-400 ease-out group-hover:translate-y-0 group-hover:opacity-100">
                     <a
-                      href={WHATSAPP_URL}
+                      href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 rounded-lg border border-cyber/40 bg-cyber/10 px-4 py-2.5 text-sm font-bold text-cyber backdrop-blur-sm transition-colors hover:bg-cyber/20"
