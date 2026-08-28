@@ -270,8 +270,6 @@ export const translations: Record<Language, Translation> = {
       addon2Price: "$40/month",
       addon3: "15 GB Extra Database Storage — monthly",
       addon3Price: "$100/month",
-      addon4: "AI Database Storage — 5 GB: $40/month | 15 GB: $100/month",
-      addon4Price: "5 GB $40 / 15 GB $100",
       cta: "Choose Package",
     },
     testimonials: {
@@ -472,8 +470,6 @@ export const translations: Record<Language, Translation> = {
       addon2Price: "$40/شهريًا",
       addon3: "15 جيجابايت مساحة إضافية لقواعد البيانات — شهريًا",
       addon3Price: "$100/شهريًا",
-      addon4: "قاعدة بيانات الذكاء الاصطناعي",
-      addon4Price: "5 جيجا $40 / 15 جيجا $100",
       cta: "اختر الباقة",
     },
     testimonials: {

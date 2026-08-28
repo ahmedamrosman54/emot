@@ -45,12 +45,6 @@ export function Pricing() {
       icon: Plus,
       color: "crimson",
     },
-    {
-      text: t.pricing.addon4,
-      price: t.pricing.addon4Price,
-      icon: HardDrive,
-      color: "mint",
-    },
   ];
 
   return (
