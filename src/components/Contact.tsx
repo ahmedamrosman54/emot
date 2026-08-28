@@ -37,11 +37,11 @@ export function Contact() {
 
   const validate = () => {
     const e: { name?: string; email?: string; message?: string } = {};
-    if (!form.name.trim()) e.name = "Required";
-    if (!form.email.trim()) e.email = "Required";
+    if (!form.name.trim()) e.name = t.contact.required;
+    if (!form.email.trim()) e.email = t.contact.required;
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      e.email = "Invalid email";
-    if (!form.message.trim()) e.message = "Required";
+      e.email = t.contact.invalidEmail;
+    if (!form.message.trim()) e.message = t.contact.required;
     setErrors(e);
     return Object.keys(e).length === 0;
   };

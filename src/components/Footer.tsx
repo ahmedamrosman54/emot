@@ -163,7 +163,7 @@ export function Footer() {
           <a
             href="#home"
             className="flex h-9 w-9 items-center justify-center rounded-full border border-cyber/30 bg-cyber/5 text-cyber transition-all hover:bg-cyber/10 hover:border-cyber/60"
-            aria-label="Back to top"
+            aria-label={t.aria.backToTop}
           >
             <ArrowUp className="h-4 w-4" />
           </a>

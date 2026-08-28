@@ -108,20 +108,20 @@ export function About() {
               <div className="mt-auto pt-6">
                 <div className="flex flex-wrap gap-2">
                   {[
-                    "React",
-                    "TypeScript",
-                    "Supabase",
-                    "PostgreSQL",
-                    "Node.js",
-                    "Cloud",
-                    "Docker",
-                    "ES6",
                     "Tailwind CSS",
+                    "TypeScript",
+                    "PostgreSQL",
                     "Angular.js",
-                    "MongoDB",
-                    "NestJS",
                     "Express.js",
+                    "Supabase",
+                    "MongoDB",
+                    "Node.js",
+                    "Docker",
+                    "NestJS",
                     "Python",
+                    "React",
+                    "Cloud",
+                    "ES6",
                     "AI",
                   ].map((tech) => (
                     <span

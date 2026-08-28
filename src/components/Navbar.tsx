@@ -96,7 +96,7 @@ export function Navbar() {
           <button
             onClick={toggleLang}
             className="group flex items-center gap-1.5 rounded-full border border-mint/30 bg-mint/5 px-3 py-1.5 text-sm font-bold text-mint transition-all hover:border-mint/60 hover:bg-mint/10 hover:shadow-[0_0_15px_rgba(58,255,158,0.3)]"
-            aria-label="Toggle language"
+            aria-label={t.aria.toggleLanguage}
           >
             <Globe className="h-4 w-4" />
             <span className="font-mono">{lang === "en" ? "ع" : "EN"}</span>
@@ -116,7 +116,7 @@ export function Navbar() {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="rounded-lg p-2 text-slate-300 transition-colors hover:text-cyber xl:hidden"
-            aria-label="Toggle menu"
+            aria-label={t.aria.toggleMenu}
           >
             {mobileOpen ? (
               <X className="h-5 w-5" />

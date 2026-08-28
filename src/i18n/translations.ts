@@ -118,6 +118,8 @@ export interface Translation {
     whatsapp: string;
     phone: string;
     emailLabel: string;
+    required: string;
+    invalidEmail: string;
   };
   footer: {
     tagline: string;
@@ -131,6 +133,14 @@ export interface Translation {
     github: string;
     linkedin: string;
   };
+  aria: {
+    toggleLanguage: string;
+    toggleMenu: string;
+    previous: string;
+    next: string;
+    goToSlide: string;
+    backToTop: string;
+  };
 }
 
 export const translations: Record<Language, Translation> = {
@@ -142,7 +152,7 @@ export const translations: Record<Language, Translation> = {
       services: "Services",
       portfolio: "Portfolio",
       pricing: "Pricing",
-      testimonials: "Reviews",
+      testimonials: "Testimonials",
       contact: "Contact",
       cta: "Get Started",
     },
@@ -179,7 +189,7 @@ export const translations: Record<Language, Translation> = {
       card4Desc:
         "APIs, webhooks, and automation pipelines that connect everything.",
       experience: "Years Experience",
-      projects: "Projects Built",
+      projects: "Projects Delivered",
       clients: "Happy Clients",
       uptime: "System Uptime",
     },
@@ -206,7 +216,7 @@ export const translations: Record<Language, Translation> = {
       title: "Selected Works",
       subtitle: "Projects built with emot engineering",
       viewProject: "View Project",
-      project1Title: "Food Delivery App",
+      project1Title: "Grocery Delivery App",
       project1Category: "Grocery Delivery Platform",
       project2Title: "Real Estate Website",
       project2Category: "Real Estate Listings",
@@ -218,7 +228,7 @@ export const translations: Record<Language, Translation> = {
     pricing: {
       badge: "Pricing",
       title: "Packages & Pricing",
-      subtitle: "Transparent pricing for every scale",
+      subtitle: "Transparent pricing for projects of every scale",
       popular: "Most Popular",
       perProject: "/ project",
       package1Name: "Standard",
@@ -226,7 +236,7 @@ export const translations: Record<Language, Translation> = {
       package1Features: [
         "Identity showcase website",
         "Free hosting included",
-        "Free non-custom domain",
+        "Free subdomain",
         "Responsive design",
         "Basic SEO setup",
       ],
@@ -236,7 +246,7 @@ export const translations: Record<Language, Translation> = {
         "Full customer & product database",
         "Data control & monitoring page",
         "5 GB hosting included",
-        "Free non-custom domain",
+        "Free subdomain",
         "Advanced SEO optimization",
         "Analytics integration",
         "Custom admin dashboard",
@@ -248,14 +258,14 @@ export const translations: Record<Language, Translation> = {
         "Data control & monitoring page",
         "10 GB hosting included",
         "Custom professional domain",
-        "1 month direct support from Ahmed Amr",
+        "One month of direct support from Ahmed Amr",
         "Priority 24/7 technical support",
         "Performance optimization",
         "Advanced security and backups",
-        "30 days post-launch support",
+        "30 days of post-launch support",
       ],
       addonsTitle: "Database Storage Add-ons",
-      addon1: "500 MB Free — included with every project",
+      addon1: "500 MB free — included with every project",
       addon2: "5 GB Extra Database Storage — monthly",
       addon2Price: "$25/month",
       addon3: "15 GB Extra Database Storage — monthly",
@@ -263,14 +273,14 @@ export const translations: Record<Language, Translation> = {
       cta: "Choose Package",
     },
     testimonials: {
-      badge: "Reviews",
+      badge: "Testimonials",
       title: "Client Testimonials",
       subtitle: "What clients say about working with emot",
       items: [
         {
           name: "Ahmed Hassan",
-          role: "Owner, Food Delivery App",
-          text: "The food delivery app made taking orders much easier for me. Customers can browse the menu quickly, and I can manage every order in one place.",
+          role: "Owner, Grocery Delivery App",
+          text: "The grocery delivery app made taking orders much easier for me. Customers can browse products quickly, and I can manage every order in one place.",
           rating: 5,
         },
         {
@@ -311,6 +321,8 @@ export const translations: Record<Language, Translation> = {
       whatsapp: "WhatsApp",
       phone: "Phone",
       emailLabel: "Email",
+      required: "Required",
+      invalidEmail: "Invalid email",
     },
     footer: {
       tagline:
@@ -324,6 +336,14 @@ export const translations: Record<Language, Translation> = {
       email: "Email",
       github: "GitHub",
       linkedin: "LinkedIn",
+    },
+    aria: {
+      toggleLanguage: "Toggle language",
+      toggleMenu: "Toggle menu",
+      previous: "Previous",
+      next: "Next",
+      goToSlide: "Go to slide",
+      backToTop: "Back to top",
     },
   },
   ar: {
@@ -339,7 +359,7 @@ export const translations: Record<Language, Translation> = {
       cta: "ابدأ الآن",
     },
     hero: {
-      badge: "تطوير المواقع والأنظمة السحابية المتكاملة",
+      badge: "أنظمة ويب وسحابة مؤسسية",
       titleLine1: "نبني",
       titleLine2: "المستقبل الرقمي",
       titleHighlight: "إيموت",
@@ -347,26 +367,26 @@ export const translations: Record<Language, Translation> = {
         "أنا أحمد عمرو، مهندس برمجيات ومؤسس منصة إيموت — أصمم أنظمة سحابية عالية الأداء وقواعد بيانات ذكية وتجارب ويب غامرة مهندسة للتوسع.",
       ctaPrimary: "ابدأ مشروعك",
       ctaSecondary: "تصفح المشاريع",
-      stat1Label: "مشروع منجز",
+      stat1Label: "مشاريع منجزة",
       stat2Label: "رضا العملاء",
       stat3Label: "سنوات خبرة",
     },
     about: {
-      badge: "من نحن",
+      badge: "نبذة عني",
       title: "مهندس. معمار. مؤسس.",
       subtitle: "العقل المبدع وراء إيموت",
       bio1: "أحمد عمرو مهندس برمجيات متخصص في البنى السحابية وأنظمة قواعد البيانات عالية الأداء. كمؤسس لمنصة إيموت، يحول المتطلبات التجارية المعقدة إلى حلول رقمية أنيقة قابلة للتوسع.",
-      bio2: "بخبرة عميقة في الأنظمة الموزعة ومسارات البيانات اللحظية والهندسة الأمامية الحديثة، يقدم أحمد منصات سريعة بقدر ما هي جميلة — كل واجهة مضبوطة لاستجابة فورية وكل قاعدة بيانات محسنة لاستعلامات لحظية.",
+      bio2: "بخبرة عميقة في الأنظمة الموزعة ومسارات البيانات اللحظية والهندسة الأمامية الحديثة، يقدم أحمد منصات سريعة بقدر ما هي جميلة — كل واجهة مضبوطة لاستجابة فورية وكل قاعدة بيانات محسنة لاستعلامات فائقة السرعة.",
       bio3: "من لوحات تحكم المؤسسات إلى تطبيقات خدمة العملاء، تقف إيموت للدقة والأداء والإتقان في كل تفصيل.",
       card1Title: "البنية السحابية",
-      card1Desc: "أنظمة موزعة مهندسة للتوسع الأفقي وانتشار بدون توقف.",
+      card1Desc: "أنظمة موزعة مصممة للتوسع الأفقي وعمليات النشر دون توقف.",
       card2Title: "هندسة قواعد البيانات",
       card2Desc: "تصميم المخططات وتحسين الاستعلامات وتأمين البيانات الحرجة.",
       card3Title: "أداء الواجهة الأمامية",
       card3Desc:
-        "أوقات تحميل أقل من ثانية وتقييم لighthouse 100/100 وتجربة سلسة.",
+        "أوقات تحميل أقل من ثانية وتقييم Lighthouse بدرجة 100/100 وتجربة مستخدم فائقة السلاسة.",
       card4Title: "تكامل الأنظمة",
-      card4Desc: "واجهات برمجية وخطوط أتمتة تربط كل شيء معاً بسلاسة.",
+      card4Desc: "واجهات برمجية وخطوط أتمتة تربط كل شيء معًا بسلاسة.",
       experience: "سنوات الخبرة",
       projects: "مشاريع منجزة",
       clients: "عملاء سعداء",
@@ -375,14 +395,14 @@ export const translations: Record<Language, Translation> = {
     services: {
       badge: "خدماتنا",
       title: "الخدمات التقنية",
-      subtitle: "هندسة كاملة من البكسل إلى خط الإنتاج",
+      subtitle: "هندسة كاملة من البكسل إلى خطوط البيانات",
       supportBadge: "دعم 24/7",
       card1Title: "تصميم الواجهات الرقمية",
       card1Desc:
-        "تصميم واجهات مستخدم حديثة وغامرة بأعلى معايير القابلية للاستخدام والوصول والتأثير البصري.",
+        "تصميم واجهات مستخدم حديثة وغامرة بأعلى معايير سهولة الاستخدام وإمكانية الوصول والتأثير البصري.",
       card2Title: "هندسة قواعد البيانات",
       card2Desc:
-        "تصميم وهندسة وتأمين قواعد بيانات العملاء والمنتجات بأداء استعلام لحظي وسلامة بيانات مطلقة.",
+        "تصميم وهندسة وتأمين قواعد بيانات العملاء والمنتجات بأداء استعلام فائق السرعة وسلامة بيانات مطلقة.",
       card3Title: "الواجهات فائقة السرعة",
       card3Desc:
         "بناء صفحات أمامية فائقة الاستجابة والسرعة تحمل فوراً وتتكيف بإتقان مع كل شاشة.",
@@ -395,8 +415,8 @@ export const translations: Record<Language, Translation> = {
       title: "أعمال مختارة",
       subtitle: "مشاريع بُنيت بهندسة إيموت",
       viewProject: "عرض المشروع",
-      project1Title: "تطبيق توصيل الطعام",
-      project1Category: "منصة توصيل بقالة",
+      project1Title: "تطبيق توصيل البقالة",
+      project1Category: "منصة توصيل البقالة",
       project2Title: "موقع عقارات",
       project2Category: "عروض وعقارات",
       project3Title: "حجز الفنادق",
@@ -407,7 +427,7 @@ export const translations: Record<Language, Translation> = {
     pricing: {
       badge: "باقاتنا",
       title: "الباقات والأسعار",
-      subtitle: "أسعار شفافة لكل حجم",
+      subtitle: "أسعار واضحة تناسب جميع أحجام المشاريع",
       popular: "الأكثر طلباً",
       perProject: "/ مشروع",
       package1Name: "الباقة العادية",
@@ -415,7 +435,7 @@ export const translations: Record<Language, Translation> = {
       package1Features: [
         "موقع إلكتروني لعرض الهوية",
         "استضافة مجانية",
-        "دومين مجاني غير مخصص",
+        "نطاق فرعي مجاني",
         "تصميم متجاوب",
         "إعداد SEO أساسي",
       ],
@@ -424,8 +444,8 @@ export const translations: Record<Language, Translation> = {
       package2Features: [
         "موقع متكامل لقواعد بيانات العملاء والمنتجات",
         "صفحة للتحكم في البيانات ومتابعتها",
-        "5 جيجا استضافة هدية",
-        "دومين مجاني غير مخصص",
+        "استضافة بسعة 5 جيجابايت مضمنة",
+        "نطاق فرعي مجاني",
         "تحسين SEO متقدم",
         "تكامل التحليلات",
         "لوحة تحكم مخصصة للإدارة",
@@ -435,49 +455,49 @@ export const translations: Record<Language, Translation> = {
       package3Features: [
         "موقع متكامل لقواعد بيانات العملاء والمنتجات",
         "صفحة للتحكم في البيانات ومتابعتها",
-        "10 جيجا استضافة هدية",
-        "دومين مخصص احترافي",
+        "استضافة بسعة 10 جيجابايت مضمنة",
+        "نطاق مخصص احترافي",
         "شهر متابعة ودعم فني مباشر من أحمد عمرو",
-        "دعم فني أولوية 24/7",
+        "دعم فني بأولوية على مدار الساعة",
         "تحسين الأداء",
-        "حماية ونسخ احتياطي متقدم",
+        "حماية متقدمة ونسخ احتياطي",
         "دعم لمدة 30 يومًا بعد الإطلاق",
       ],
-      addonsTitle: "ملحق مساحات قواعد البيانات",
-      addon1: "500 ميجا مجاني — تمنح مع كل مشروع",
-      addon2: "5 جيجا مساحة إضافية لقواعد البيانات — شهريًا",
+      addonsTitle: "إضافات مساحة قواعد البيانات",
+      addon1: "500 ميجابايت مجانًا — مضمنة مع كل مشروع",
+      addon2: "5 جيجابايت مساحة إضافية لقواعد البيانات — شهريًا",
       addon2Price: "$25/شهريًا",
-      addon3: "15 جيجا مساحة إضافية لقواعد البيانات — شهريًا",
+      addon3: "15 جيجابايت مساحة إضافية لقواعد البيانات — شهريًا",
       addon3Price: "$65/شهريًا",
       cta: "اختر الباقة",
     },
     testimonials: {
       badge: "آراء العملاء",
-      title: "تقييمات العملاء",
+      title: "آراء العملاء",
       subtitle: "ما يقوله العملاء عن العمل مع إيموت",
       items: [
         {
           name: "أحمد حسن",
-          role: "صاحب موقع تطبيق توصيل الطعام",
-          text: "تطبيق توصيل الأكل سهّل عليا استقبال الطلبات جداً. الزباين بقت تتصفح المنيو بسرعة وأنا بقدر أتابع كل الأوردرات من مكان واحد.",
+          role: "مالك تطبيق توصيل البقالة",
+          text: "سهّل تطبيق توصيل البقالة استقبال الطلبات كثيرًا. أصبح العملاء يتصفحون القائمة بسرعة، ويمكنني متابعة جميع الطلبات من مكان واحد.",
           rating: 5,
         },
         {
           name: "محمد علي",
-          role: "صاحب موقع العقارات",
-          text: "كنت محتاج موقع واضح أعرض فيه الشقق والعروض، وده اللي حصل بالظبط. الإعلانات بقت مترتبة والعميل بيوصل للعقار المناسب أسرع بكتير.",
+          role: "مالك موقع العقارات",
+          text: "كنت أحتاج إلى موقع واضح لعرض الشقق والعروض، وهذا ما حصلت عليه بالضبط. أصبحت الإعلانات مرتبة، ويصل العميل إلى العقار المناسب بسرعة أكبر.",
           rating: 5,
         },
         {
           name: "كريم سمير",
-          role: "صاحب موقع حجز الفنادق",
-          text: "موقع حجز الفنادق وفر علينا كلام كتير رايح جاي. النزيل بيشوف التفاصيل ويبعت حجزه بسهولة، وفريقنا بيتابع كل حجز من مكان واحد.",
+          role: "مالك نظام حجز الفنادق",
+          text: "وفّر لنا موقع حجز الفنادق الكثير من التواصل المتكرر. يرى النزيل التفاصيل ويرسل حجزه بسهولة، بينما يتابع فريقنا جميع الحجوزات من مكان واحد.",
           rating: 5,
         },
         {
           name: "عمر خالد",
-          role: "صاحب موقع حجز الأطباء",
-          text: "موقع حجز الأطباء شكله احترافي وفي نفس الوقت سهل للمرضى. من أول يوم بدأنا نستقبل طلبات مواعيد مرتبة وواضحة.",
+          role: "مالك نظام حجز الأطباء",
+          text: "يبدو موقع حجز الأطباء احترافيًا وسهل الاستخدام للمرضى في الوقت نفسه. بدأنا منذ اليوم الأول باستقبال طلبات مواعيد مرتبة وواضحة.",
           rating: 5,
         },
       ],
@@ -499,6 +519,8 @@ export const translations: Record<Language, Translation> = {
       whatsapp: "واتساب",
       phone: "الهاتف",
       emailLabel: "البريد الإلكتروني",
+      required: "هذا الحقل مطلوب",
+      invalidEmail: "البريد الإلكتروني غير صالح",
     },
     footer: {
       tagline: "تطوير مواقع وأنظمة سحابية متكاملة مهندسة للمستقبل.",
@@ -511,6 +533,14 @@ export const translations: Record<Language, Translation> = {
       email: "البريد الإلكتروني",
       github: "جيت هاب",
       linkedin: "لينكد إن",
+    },
+    aria: {
+      toggleLanguage: "تبديل اللغة",
+      toggleMenu: "فتح القائمة",
+      previous: "السابق",
+      next: "التالي",
+      goToSlide: "الانتقال إلى الشريحة",
+      backToTop: "العودة إلى الأعلى",
     },
   },
 };

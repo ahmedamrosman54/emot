@@ -170,7 +170,7 @@ export function Testimonials() {
               <button
                 onClick={prev}
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-cyber/30 bg-cyber/5 text-cyber transition-all hover:bg-cyber/10 hover:border-cyber/60"
-                aria-label="Previous"
+                aria-label={t.aria.previous}
               >
                 {lang === "ar" ? (
                   <ChevronRight className="h-5 w-5" />
@@ -188,7 +188,7 @@ export function Testimonials() {
                     className={`h-2 rounded-full transition-all ${
                       current === i ? "w-8 bg-cyber" : "w-2 bg-slate-600"
                     }`}
-                    aria-label={`Go to slide ${i + 1}`}
+                    aria-label={`${t.aria.goToSlide} ${i + 1}`}
                   />
                 ))}
               </div>
@@ -196,7 +196,7 @@ export function Testimonials() {
               <button
                 onClick={next}
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-cyber/30 bg-cyber/5 text-cyber transition-all hover:bg-cyber/10 hover:border-cyber/60"
-                aria-label="Next"
+                aria-label={t.aria.next}
               >
                 {lang === "ar" ? (
                   <ChevronLeft className="h-5 w-5" />
